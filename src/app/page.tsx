@@ -13,10 +13,12 @@ import {
 import { Edit, FileOpen, Info, CloudDownload } from '@mui/icons-material';
 import Link from 'next/link';
 import { useRef } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 export default function HomePage() {
-  const { basePath } = useRouter();
+  // Use the basePath from environment variable
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const router = useRouter();
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -33,7 +35,7 @@ export default function HomePage() {
           const jsonData = JSON.parse(e.target?.result as string);
           // Store the imported data and navigate to editor
           localStorage.setItem('importedUSDM', JSON.stringify(jsonData));
-          window.location.href = '/editor?source=import';
+          router.push('/editor?source=import');
         } catch (error) {
           alert('Invalid JSON file. Please select a valid USDM JSON file.');
         }
@@ -45,12 +47,12 @@ export default function HomePage() {
   const handleLoadExample = async () => {
     try {
       const response = await fetch(
-        basePath || '/Example/CDISC_Pilot_Study.json'
+        `${basePath}/Example/CDISC_Pilot_Study.json`
       );
       const exampleData = await response.json();
       // Store the example data and navigate to editor
       localStorage.setItem('importedUSDM', JSON.stringify(exampleData));
-      window.location.href = '/editor?source=example';
+      router.push('/editor?source=example');
     } catch (error) {
       alert('Failed to load example file. Please try again.');
     }

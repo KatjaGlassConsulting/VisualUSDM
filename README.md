@@ -29,6 +29,25 @@ cd VisualUSDM
 # Install dependencies
 npm install
 
+# Set up environment variables
+cp .env.example .env.local
+# Edit .env.local with your configuration
+```
+
+### Environment Variables
+
+The application uses environment variables for configuration:
+
+- `NEXT_PUBLIC_BASE_PATH` - Base path for deployment (e.g., `/VisualUSDM` for GitHub Pages)
+
+**Environment Files:**
+- `.env.local` - Local development overrides (not committed)
+- `.env.development` - Development environment (empty basePath for local dev)
+- `.env.production` - Production environment (with basePath for GitHub Pages)
+- `.env.example` - Example configuration file
+
+For local development, the basePath is empty. For GitHub Pages deployment, it's automatically set to `/VisualUSDM`.
+
 # Start the development server
 npm run dev
 ```
