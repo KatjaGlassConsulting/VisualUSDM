@@ -10,16 +10,16 @@ const nextConfig = {
   // GitHub Pages configuration - always export as static
   output: 'export',
   basePath: '/VisualUSDM',
-  assetPrefix: '/VisualUSDM',
+  assetPrefix: '/VisualUSDM/',
   trailingSlash: true,
   images: {
     unoptimized: true,
   },
   // Override basePath if explicitly provided by GitHub Actions
-  ...(process.env.GITHUB_PAGES_BASE_PATH && {
-    basePath: process.env.GITHUB_PAGES_BASE_PATH,
-    assetPrefix: process.env.GITHUB_PAGES_BASE_PATH,
-  }),
+  //...(process.env.GITHUB_PAGES_BASE_PATH && {
+  //  basePath: process.env.GITHUB_PAGES_BASE_PATH,
+  //  assetPrefix: process.env.GITHUB_PAGES_BASE_PATH,
+  //}),
 };
 
 export default nextConfig;
