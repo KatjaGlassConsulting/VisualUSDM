@@ -45,36 +45,16 @@ import {
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
-// Helper function to safely parse JSON
-const safeParseJSON = (jsonString: string) => {
-  try {
-    return JSON.parse(jsonString);
-  } catch {
-    return null;
-  }
-};
-
-// Helper function to convert date to yyyy-mm-dd format
-const formatDateForInput = (dateString: string) => {
-  if (!dateString) return '';
-  
-  // If already in yyyy-mm-dd format, return as is
-  if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
-    return dateString;
-  }
-  
-  // Try to parse and convert to yyyy-mm-dd
-  try {
-    const date = new Date(dateString);
-    if (!isNaN(date.getTime())) {
-      return date.toISOString().split('T')[0]; // Returns yyyy-mm-dd
-    }
-  } catch {
-    // If parsing fails, return empty string
-  }
-  
-  return '';
-};
+// Import utility functions
+import {
+  safeParseJSON,
+  formatDateForInput,
+  updateNestedField,
+  exportUSDMAsJSON,
+  debounce,
+  getDisplayText,
+  formatCodeDisplay
+} from './utils';
 
 export default function EditorPage() {
   const [jsonContent, setJsonContent] = useState('');
@@ -86,15 +66,49 @@ export default function EditorPage() {
   const [selectedVersionIndex, setSelectedVersionIndex] = useState<number>(0); // Track selected version
   const [selectedAmendmentIndex, setSelectedAmendmentIndex] = useState<number>(0); // Track selected amendment
   const [selectedStudyDesignIndex, setSelectedStudyDesignIndex] = useState<number>(0); // Track selected study design
-  const [updateTimeout, setUpdateTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [jsonDisplayContent, setJsonDisplayContent] = useState(''); // Separate state for JSON display
+  const [isInitialLoad, setIsInitialLoad] = useState(true); // Track if this is the first JSON load
   const searchParams = useSearchParams();
 
-  // Update parsed USDM whenever JSON content changes
+  // Create debounced update function using utility
+  const debouncedUpdate = debounce((path: (string | number)[], value: any) => {
+    if (!parsedUSDM) return;
+    
+    const updated = updateNestedField(parsedUSDM, path, value);
+    setParsedUSDM(updated);
+    setJsonDisplayContent(JSON.stringify(updated, null, 2)); // Update display-only JSON
+  }, 2000);
+
+  // Helper function for table field updates with immediate display update
+  const handleTableFieldUpdate = (path: (string | number)[], value: any) => {
+    // Immediately update display values for responsive UI
+    setDisplayValues((prev: any) => {
+      const updated = { ...prev };
+      let current = updated;
+      
+      // Navigate to the parent object
+      for (let i = 0; i < path.length - 1; i++) {
+        if (!current[path[i]]) current[path[i]] = {};
+        current = current[path[i]];
+      }
+      
+      // Set the value
+      current[path[path.length - 1]] = value;
+      return updated;
+    });
+    
+    // Trigger debounced update to actual data
+    debouncedUpdate(path, value);
+  };
+
+  // Update parsed USDM whenever JSON content changes (ONLY on initial load)
   useEffect(() => {
-    if (jsonContent.trim()) {
+    if (jsonContent.trim() && isInitialLoad) {
+        console.log("triggered!!!!")
       const parsed = safeParseJSON(jsonContent);
       setParsedUSDM(parsed);
       setDisplayValues(parsed || {}); // Sync display values with parsed data
+      setJsonDisplayContent(jsonContent); // Sync display JSON with input JSON
       
       // Set selected version to the last one
       if (parsed?.study?.versions?.length > 0) {
@@ -110,23 +124,19 @@ export default function EditorPage() {
           setSelectedStudyDesignIndex(parsed.study.versions[parsed.study.versions.length - 1].studyDesigns.length - 1);
         }
       }
-    } else {
+      
+      setIsInitialLoad(false); // Mark that initial load is complete
+    } else if (!jsonContent.trim()) {
+      // Reset everything if JSON is cleared
       setParsedUSDM(null);
       setDisplayValues({});
+      setJsonDisplayContent('');
       setSelectedVersionIndex(0);
       setSelectedAmendmentIndex(0);
       setSelectedStudyDesignIndex(0);
+      setIsInitialLoad(true); // Reset for next load
     }
-  }, [jsonContent]);
-
-  // Cleanup timeout on unmount
-  useEffect(() => {
-    return () => {
-      if (updateTimeout) {
-        clearTimeout(updateTimeout);
-      }
-    };
-  }, [updateTimeout]);
+  }, [jsonContent, isInitialLoad]);
 
   useEffect(() => {
     const source = searchParams?.get('source');
@@ -135,7 +145,10 @@ export default function EditorPage() {
       if (importedData) {
         try {
           const parsedData = JSON.parse(importedData);
-          setJsonContent(JSON.stringify(parsedData, null, 2));
+          const formattedJson = JSON.stringify(parsedData, null, 2);
+          setIsInitialLoad(true); // Reset flag before setting JSON content
+          setJsonContent(formattedJson);
+          setJsonDisplayContent(formattedJson); // Initialize display content
           setLoadingStatus(source === 'import' ? 'Imported USDM file loaded successfully!' : 'Example USDM file loaded successfully!');
           setError(null);
           // Clean up localStorage after loading
@@ -149,6 +162,7 @@ export default function EditorPage() {
 
   const handleJsonChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = event.target.value;
+    setIsInitialLoad(true); // Reset flag for manual JSON input
     setJsonContent(value);
     
     try {
@@ -166,23 +180,8 @@ export default function EditorPage() {
     if (!parsedUSDM) return;
     
     // Immediately update display values for responsive UI
-    const immediateUpdate = { ...displayValues };
-    let current = immediateUpdate;
-    for (let i = 0; i < path.length - 1; i++) {
-      if (!current[path[i]]) current[path[i]] = {};
-      current = current[path[i]];
-    }
-    current[path[path.length - 1]] = value;
-    setDisplayValues(immediateUpdate);
-    
-    // Clear existing timeout
-    if (updateTimeout) {
-      clearTimeout(updateTimeout);
-    }
-    
-    // Set new timeout for debounced update to actual data and JSON
-    const timeout = setTimeout(() => {
-      const updated = { ...parsedUSDM };
+    setDisplayValues((prev: any) => {
+      const updated = { ...prev };
       let current = updated;
       
       // Navigate to the parent object
@@ -193,13 +192,11 @@ export default function EditorPage() {
       
       // Set the value
       current[path[path.length - 1]] = value;
-      
-      // Update both parsed data and JSON string
-      setParsedUSDM(updated);
-      setJsonContent(JSON.stringify(updated, null, 2));
-    }, 2000); // 2 second delay
+      return updated;
+    });
     
-    setUpdateTimeout(timeout);
+    // Trigger debounced update to actual data
+    debouncedUpdate(path, value);
   };
 
   const toggleFullscreen = () => {
@@ -207,22 +204,12 @@ export default function EditorPage() {
   };
 
   const handleExport = () => {
-    if (!error && jsonContent.trim()) {
-      try {
-        // Parse and re-stringify to ensure beautiful formatting
-        const parsedJson = JSON.parse(jsonContent);
-        const beautifiedJson = JSON.stringify(parsedJson, null, 2);
-        
-        const blob = new Blob([beautifiedJson], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'usdm-document.json';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      } catch (err) {
+    if (!error && (jsonDisplayContent.trim() || jsonContent.trim())) {
+      const jsonToExport = jsonDisplayContent.trim() || jsonContent.trim();
+      const parsedJson = safeParseJSON(jsonToExport);
+      if (parsedJson) {
+        exportUSDMAsJSON(parsedJson, 'usdm-document.json');
+      } else {
         setError('Cannot export invalid JSON');
       }
     }
@@ -253,7 +240,7 @@ export default function EditorPage() {
             <Button
               variant="contained"
               onClick={handleExport}
-              disabled={!!error || !jsonContent.trim()}
+              disabled={!!error || (!jsonDisplayContent.trim() && !jsonContent.trim())}
               startIcon={<Download />}
             >
               Export
@@ -391,24 +378,7 @@ export default function EditorPage() {
                                         value={title?.text || ''}
                                         onChange={(e) => {
                                           const newValue = e.target.value;
-                                          if (updateTimeout) {
-                                            clearTimeout(updateTimeout);
-                                          }
-                                          
-                                          // Update display values immediately
-                                          setDisplayValues((prev: any) => {
-                                            const updated = { ...prev };
-                                            if (updated.study?.versions?.[selectedVersionIndex]?.titles?.[titleIndex]) {
-                                              updated.study.versions[selectedVersionIndex].titles[titleIndex].text = newValue;
-                                            }
-                                            return updated;
-                                          });
-                                          
-                                          // Debounce the actual update
-                                          const timeout = setTimeout(() => {
-                                            updateUSDMField(['study', 'versions', selectedVersionIndex, 'titles', titleIndex, 'text'], newValue);
-                                          }, 2000);
-                                          setUpdateTimeout(timeout);
+                                          handleTableFieldUpdate(['study', 'versions', selectedVersionIndex, 'titles', titleIndex, 'text'], newValue);
                                         }}
                                       />
                                     </TableCell>
@@ -425,7 +395,7 @@ export default function EditorPage() {
                                     </TableCell>
                                     <TableCell>
                                       <Typography variant="body2">
-                                        {area?.decode || 'No decode available'}
+                                        {formatCodeDisplay(area)}
                                       </Typography>
                                     </TableCell>
                                   </TableRow>
@@ -446,24 +416,7 @@ export default function EditorPage() {
                                         value={identifier?.text || ''}
                                         onChange={(e) => {
                                           const newValue = e.target.value;
-                                          if (updateTimeout) {
-                                            clearTimeout(updateTimeout);
-                                          }
-                                          
-                                          // Update display values immediately
-                                          setDisplayValues((prev: any) => {
-                                            const updated = { ...prev };
-                                            if (updated.study?.versions?.[selectedVersionIndex]?.studyIdentifiers?.[identifierIndex]) {
-                                              updated.study.versions[selectedVersionIndex].studyIdentifiers[identifierIndex].text = newValue;
-                                            }
-                                            return updated;
-                                          });
-                                          
-                                          // Debounce the actual update
-                                          const timeout = setTimeout(() => {
-                                            updateUSDMField(['study', 'versions', selectedVersionIndex, 'studyIdentifiers', identifierIndex, 'text'], newValue);
-                                          }, 2000);
-                                          setUpdateTimeout(timeout);
+                                          handleTableFieldUpdate(['study', 'versions', selectedVersionIndex, 'studyIdentifiers', identifierIndex, 'text'], newValue);
                                         }}
                                       />
                                     </TableCell>
@@ -495,24 +448,7 @@ export default function EditorPage() {
                                             ? newValue.substring(typeDecode.length).trim() 
                                             : newValue;
                                           
-                                          if (updateTimeout) {
-                                            clearTimeout(updateTimeout);
-                                          }
-                                          
-                                          // Update display values immediately
-                                          setDisplayValues((prev: any) => {
-                                            const updated = { ...prev };
-                                            if (updated.study?.versions?.[selectedVersionIndex]?.referenceIdentifiers?.[referenceIndex]) {
-                                              updated.study.versions[selectedVersionIndex].referenceIdentifiers[referenceIndex].text = textValue;
-                                            }
-                                            return updated;
-                                          });
-                                          
-                                          // Debounce the actual update
-                                          const timeout = setTimeout(() => {
-                                            updateUSDMField(['study', 'versions', selectedVersionIndex, 'referenceIdentifiers', referenceIndex, 'text'], textValue);
-                                          }, 2000);
-                                          setUpdateTimeout(timeout);
+                                          handleTableFieldUpdate(['study', 'versions', selectedVersionIndex, 'referenceIdentifiers', referenceIndex, 'text'], textValue);
                                         }}
                                       />
                                     </TableCell>
@@ -745,15 +681,12 @@ export default function EditorPage() {
                                                   Primary Reason
                                                 </Typography>
                                               </TableCell>
-                                              <TableCell>
-                                                <Typography variant="body2">
-                                                  {(() => {
-                                                    const primaryReason = displayValues.study.versions[selectedVersionIndex].amendments[selectedAmendmentIndex].primaryReason;
-                                                    const decode = primaryReason?.code?.decode || '';
-                                                    const otherReason = primaryReason?.otherReason;
-                                                    return decode + (otherReason ? ` - ${otherReason}` : '');
-                                                  })()}
-                                                </Typography>
+                                              <TableCell>                                      <Typography variant="body2">
+                                        {(() => {
+                                          const primaryReason = displayValues.study.versions[selectedVersionIndex].amendments[selectedAmendmentIndex].primaryReason;
+                                          return getDisplayText(primaryReason?.code?.decode, primaryReason?.otherReason);
+                                        })()}
+                                      </Typography>
                                               </TableCell>
                                             </TableRow>
                                           )}
@@ -766,14 +699,9 @@ export default function EditorPage() {
                                                   Secondary Reason
                                                 </Typography>
                                               </TableCell>
-                                              <TableCell>
-                                                <Typography variant="body2">
-                                                  {(() => {
-                                                    const decode = secondaryReason?.code?.decode || '';
-                                                    const otherReason = secondaryReason?.otherReason;
-                                                    return decode + (otherReason ? ` - ${otherReason}` : '');
-                                                  })()}
-                                                </Typography>
+                                              <TableCell>                                              <Typography variant="body2">
+                                                {getDisplayText(secondaryReason?.code?.decode, secondaryReason?.otherReason)}
+                                              </Typography>
                                               </TableCell>
                                             </TableRow>
                                           ))}
@@ -873,24 +801,7 @@ export default function EditorPage() {
                                                   value={enrollment?.quantity?.value || ''}
                                                   onChange={(e) => {
                                                     const newValue = parseInt(e.target.value) || 0;
-                                                    if (updateTimeout) {
-                                                      clearTimeout(updateTimeout);
-                                                    }
-                                                    
-                                                    // Update display values immediately
-                                                    setDisplayValues((prev: any) => {
-                                                      const updated = { ...prev };
-                                                      if (updated.study?.versions?.[selectedVersionIndex]?.amendments?.[selectedAmendmentIndex]?.enrollments?.[enrollmentIndex]?.quantity) {
-                                                        updated.study.versions[selectedVersionIndex].amendments[selectedAmendmentIndex].enrollments[enrollmentIndex].quantity.value = newValue;
-                                                      }
-                                                      return updated;
-                                                    });
-                                                    
-                                                    // Debounce the actual update
-                                                    const timeout = setTimeout(() => {
-                                                      updateUSDMField(['study', 'versions', selectedVersionIndex, 'amendments', selectedAmendmentIndex, 'enrollments', enrollmentIndex, 'quantity', 'value'], newValue);
-                                                    }, 2000);
-                                                    setUpdateTimeout(timeout);
+                                                    handleTableFieldUpdate(['study', 'versions', selectedVersionIndex, 'amendments', selectedAmendmentIndex, 'enrollments', enrollmentIndex, 'quantity', 'value'], newValue);
                                                   }}
                                                   sx={{ width: '120px' }}
                                                   inputProps={{ min: 0 }}
@@ -914,24 +825,7 @@ export default function EditorPage() {
                                                   value={dateValue?.dateValue || ''}
                                                   onChange={(e) => {
                                                     const newValue = e.target.value;
-                                                    if (updateTimeout) {
-                                                      clearTimeout(updateTimeout);
-                                                    }
-                                                    
-                                                    // Update display values immediately
-                                                    setDisplayValues((prev: any) => {
-                                                      const updated = { ...prev };
-                                                      if (updated.study?.versions?.[selectedVersionIndex]?.amendments?.[selectedAmendmentIndex]?.dateValues?.[dateIndex]) {
-                                                        updated.study.versions[selectedVersionIndex].amendments[selectedAmendmentIndex].dateValues[dateIndex].dateValue = newValue;
-                                                      }
-                                                      return updated;
-                                                    });
-                                                    
-                                                    // Debounce the actual update
-                                                    const timeout = setTimeout(() => {
-                                                      updateUSDMField(['study', 'versions', selectedVersionIndex, 'amendments', selectedAmendmentIndex, 'dateValues', dateIndex, 'dateValue'], newValue);
-                                                    }, 2000);
-                                                    setUpdateTimeout(timeout);
+                                                    handleTableFieldUpdate(['study', 'versions', selectedVersionIndex, 'amendments', selectedAmendmentIndex, 'dateValues', dateIndex, 'dateValue'], newValue);
                                                   }}
                                                   sx={{ width: '180px' }}
                                                   InputLabelProps={{
@@ -1037,7 +931,7 @@ export default function EditorPage() {
                                             </TableCell>
                                             <TableCell>
                                               <Typography variant="body2">
-                                                {displayValues.study.versions[selectedVersionIndex].studyDesigns[selectedStudyDesignIndex].studyType?.decode || 'No decode available'}
+                                                {formatCodeDisplay(displayValues.study.versions[selectedVersionIndex].studyDesigns[selectedStudyDesignIndex].studyType)}
                                               </Typography>
                                             </TableCell>
                                           </TableRow>
@@ -1053,7 +947,7 @@ export default function EditorPage() {
                                             </TableCell>
                                             <TableCell>
                                               <Typography variant="body2">
-                                                {displayValues.study.versions[selectedVersionIndex].studyDesigns[selectedStudyDesignIndex].studyPhase?.standardCode?.decode || 'No decode available'}
+                                                {formatCodeDisplay(displayValues.study.versions[selectedVersionIndex].studyDesigns[selectedStudyDesignIndex].studyPhase?.standardCode)}
                                               </Typography>
                                             </TableCell>
                                           </TableRow>
@@ -1069,7 +963,7 @@ export default function EditorPage() {
                                             </TableCell>
                                             <TableCell>
                                               <Typography variant="body2">
-                                                {area?.decode || 'No decode available'}
+                                                {formatCodeDisplay(area)}
                                               </Typography>
                                             </TableCell>
                                           </TableRow>
@@ -1085,7 +979,7 @@ export default function EditorPage() {
                                             </TableCell>
                                             <TableCell>
                                               <Typography variant="body2">
-                                                {characteristic?.decode || 'No decode available'}
+                                                {formatCodeDisplay(characteristic)}
                                               </Typography>
                                             </TableCell>
                                           </TableRow>
@@ -1138,7 +1032,7 @@ export default function EditorPage() {
               <Card sx={{ mb: 3 }}>
                 <CardContent>
                   <Typography variant="h6" component="h3" gutterBottom>
-                    JSON Viewer
+                    JSON Viewer (Read-only)
                   </Typography>
                   <TextField
                     fullWidth
@@ -1146,12 +1040,15 @@ export default function EditorPage() {
                     rows={15}
                     variant="outlined"
                     placeholder="JSON content will be displayed here..."
-                    value={jsonContent}
-                    onChange={handleJsonChange}
+                    value={jsonDisplayContent || jsonContent}
+                    InputProps={{
+                      readOnly: true,
+                    }}
                     sx={{
                       '& .MuiInputBase-input': {
                         fontFamily: 'monospace',
                         fontSize: '12px',
+                        backgroundColor: 'grey.50',
                       },
                     }}
                   />
