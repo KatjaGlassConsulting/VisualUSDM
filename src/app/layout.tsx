@@ -9,9 +9,6 @@ export const metadata: Metadata = {
   description: 'Creating a Visual USDM Editor for Clinical Trials',
   keywords: ['USDM', 'Clinical Trials', 'CDISC', 'React', 'Material-UI'],
   authors: [{ name: 'Visual USDM Team' }],
-  icons: {
-    icon: `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/favicon.ico`,
-  },
 };
 
 export const viewport: Viewport = {

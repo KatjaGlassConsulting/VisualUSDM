@@ -13,7 +13,6 @@ import {
 import { Edit, FileOpen, Info, CloudDownload } from '@mui/icons-material';
 import Link from 'next/link';
 import { useRef } from 'react';
-import { getAssetPath } from './editor/utils';
 
 export default function HomePage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -31,7 +30,7 @@ export default function HomePage() {
           const jsonData = JSON.parse(e.target?.result as string);
           // Store the imported data and navigate to editor
           localStorage.setItem('importedUSDM', JSON.stringify(jsonData));
-          window.location.href = getAssetPath('/editor?source=import');
+          window.location.href = '/editor?source=import';
         } catch (error) {
           alert('Invalid JSON file. Please select a valid USDM JSON file.');
         }
@@ -42,13 +41,11 @@ export default function HomePage() {
 
   const handleLoadExample = async () => {
     try {
-      const response = await fetch(
-        getAssetPath('/Example/CDISC_Pilot_Study.json')
-      );
+      const response = await fetch('/Example/CDISC_Pilot_Study.json');
       const exampleData = await response.json();
       // Store the example data and navigate to editor
       localStorage.setItem('importedUSDM', JSON.stringify(exampleData));
-      window.location.href = getAssetPath('/editor?source=example');
+      window.location.href = '/editor?source=example';
     } catch (error) {
       alert('Failed to load example file. Please try again.');
     }
