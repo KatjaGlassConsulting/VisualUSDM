@@ -300,3 +300,14 @@ export const formatCodeDisplay = (
 
   return codeObj.decode || codeObj.code || fallback;
 };
+
+/**
+ * Get the correct asset path with basePath prefix
+ * @param path - The asset path (e.g., '/Example/file.json')
+ * @returns Correct path with basePath prefix for GitHub Pages
+ */
+export const getAssetPath = (path: string): string => {
+  // Use environment variable to determine if we need the base path
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  return `${basePath}${path}`;
+};
