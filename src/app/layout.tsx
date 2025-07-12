@@ -25,6 +25,20 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link
+          rel="icon"
+          type="image/x-icon"
+          href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/favicon.ico`}
+        />
+        <link
+          rel="shortcut icon"
+          type="image/x-icon"
+          href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/favicon.ico`}
+        />
+        <link
+          rel="manifest"
+          href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/manifest.json`}
+        />
+        <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
         />
