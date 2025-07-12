@@ -10,7 +10,7 @@ const nextConfig = {
   // GitHub Pages configuration - always export as static
   output: 'export',
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
-  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/` : '',
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
   trailingSlash: true,
   images: {
     unoptimized: true,
@@ -18,7 +18,7 @@ const nextConfig = {
   // Override with GitHub Actions environment variable if provided
   ...(process.env.GITHUB_PAGES_BASE_PATH && {
     basePath: process.env.GITHUB_PAGES_BASE_PATH,
-    assetPrefix: process.env.GITHUB_PAGES_BASE_PATH + '/',
+    assetPrefix: process.env.GITHUB_PAGES_BASE_PATH,
   }),
 };
 
