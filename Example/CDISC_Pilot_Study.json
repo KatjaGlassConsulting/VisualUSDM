@@ -1046,9 +1046,7 @@
                   "BiomedicalConcept_21"
                 ],
                 "bcCategoryIds": [],
-                "bcSurrogateIds": [
-                  "BiomedicalConceptSurrogate_1"
-                ],
+                "bcSurrogateIds": ["BiomedicalConceptSurrogate_1"],
                 "timelineId": null,
                 "notes": [],
                 "instanceType": "Activity"
@@ -1419,9 +1417,7 @@
                 "nextId": "Activity_25",
                 "childIds": [],
                 "definedProcedures": [],
-                "biomedicalConceptIds": [
-                  "BiomedicalConcept_32"
-                ],
+                "biomedicalConceptIds": ["BiomedicalConcept_32"],
                 "bcCategoryIds": [],
                 "bcSurrogateIds": [],
                 "timelineId": null,
@@ -1540,9 +1536,7 @@
                 "nextId": "Activity_32",
                 "childIds": [],
                 "definedProcedures": [],
-                "biomedicalConceptIds": [
-                  "BiomedicalConcept_1"
-                ],
+                "biomedicalConceptIds": ["BiomedicalConcept_1"],
                 "bcCategoryIds": [],
                 "bcSurrogateIds": [],
                 "timelineId": null,
@@ -1780,9 +1774,7 @@
                 "extensionAttributes": [],
                 "armId": "StudyArm_1",
                 "epochId": "StudyEpoch_1",
-                "elementIds": [
-                  "StudyElement_1"
-                ],
+                "elementIds": ["StudyElement_1"],
                 "instanceType": "StudyCell"
               },
               {
@@ -1790,9 +1782,7 @@
                 "extensionAttributes": [],
                 "armId": "StudyArm_1",
                 "epochId": "StudyEpoch_2",
-                "elementIds": [
-                  "StudyElement_2"
-                ],
+                "elementIds": ["StudyElement_2"],
                 "instanceType": "StudyCell"
               },
               {
@@ -1800,9 +1790,7 @@
                 "extensionAttributes": [],
                 "armId": "StudyArm_1",
                 "epochId": "StudyEpoch_3",
-                "elementIds": [
-                  "StudyElement_2"
-                ],
+                "elementIds": ["StudyElement_2"],
                 "instanceType": "StudyCell"
               },
               {
@@ -1810,9 +1798,7 @@
                 "extensionAttributes": [],
                 "armId": "StudyArm_1",
                 "epochId": "StudyEpoch_4",
-                "elementIds": [
-                  "StudyElement_2"
-                ],
+                "elementIds": ["StudyElement_2"],
                 "instanceType": "StudyCell"
               },
               {
@@ -1820,9 +1806,7 @@
                 "extensionAttributes": [],
                 "armId": "StudyArm_1",
                 "epochId": "StudyEpoch_5",
-                "elementIds": [
-                  "StudyElement_7"
-                ],
+                "elementIds": ["StudyElement_7"],
                 "instanceType": "StudyCell"
               },
               {
@@ -1830,9 +1814,7 @@
                 "extensionAttributes": [],
                 "armId": "StudyArm_2",
                 "epochId": "StudyEpoch_1",
-                "elementIds": [
-                  "StudyElement_1"
-                ],
+                "elementIds": ["StudyElement_1"],
                 "instanceType": "StudyCell"
               },
               {
@@ -1840,9 +1822,7 @@
                 "extensionAttributes": [],
                 "armId": "StudyArm_2",
                 "epochId": "StudyEpoch_2",
-                "elementIds": [
-                  "StudyElement_3"
-                ],
+                "elementIds": ["StudyElement_3"],
                 "instanceType": "StudyCell"
               },
               {
@@ -1850,9 +1830,7 @@
                 "extensionAttributes": [],
                 "armId": "StudyArm_2",
                 "epochId": "StudyEpoch_3",
-                "elementIds": [
-                  "StudyElement_3"
-                ],
+                "elementIds": ["StudyElement_3"],
                 "instanceType": "StudyCell"
               },
               {
@@ -1860,9 +1838,7 @@
                 "extensionAttributes": [],
                 "armId": "StudyArm_2",
                 "epochId": "StudyEpoch_4",
-                "elementIds": [
-                  "StudyElement_3"
-                ],
+                "elementIds": ["StudyElement_3"],
                 "instanceType": "StudyCell"
               },
               {
@@ -1870,9 +1846,7 @@
                 "extensionAttributes": [],
                 "armId": "StudyArm_2",
                 "epochId": "StudyEpoch_5",
-                "elementIds": [
-                  "StudyElement_7"
-                ],
+                "elementIds": ["StudyElement_7"],
                 "instanceType": "StudyCell"
               },
               {
@@ -1880,9 +1854,7 @@
                 "extensionAttributes": [],
                 "armId": "StudyArm_3",
                 "epochId": "StudyEpoch_1",
-                "elementIds": [
-                  "StudyElement_1"
-                ],
+                "elementIds": ["StudyElement_1"],
                 "instanceType": "StudyCell"
               },
               {
@@ -1890,9 +1862,7 @@
                 "extensionAttributes": [],
                 "armId": "StudyArm_3",
                 "epochId": "StudyEpoch_2",
-                "elementIds": [
-                  "StudyElement_4"
-                ],
+                "elementIds": ["StudyElement_4"],
                 "instanceType": "StudyCell"
               },
               {
@@ -1900,9 +1870,7 @@
                 "extensionAttributes": [],
                 "armId": "StudyArm_3",
                 "epochId": "StudyEpoch_3",
-                "elementIds": [
-                  "StudyElement_5"
-                ],
+                "elementIds": ["StudyElement_5"],
                 "instanceType": "StudyCell"
               },
               {
@@ -1910,9 +1878,7 @@
                 "extensionAttributes": [],
                 "armId": "StudyArm_3",
                 "epochId": "StudyEpoch_4",
-                "elementIds": [
-                  "StudyElement_6"
-                ],
+                "elementIds": ["StudyElement_6"],
                 "instanceType": "StudyCell"
               },
               {
@@ -1920,9 +1886,7 @@
                 "extensionAttributes": [],
                 "armId": "StudyArm_3",
                 "epochId": "StudyEpoch_5",
-                "elementIds": [
-                  "StudyElement_7"
-                ],
+                "elementIds": ["StudyElement_7"],
                 "instanceType": "StudyCell"
               }
             ],
@@ -2196,9 +2160,7 @@
                 "description": "",
                 "populationSummary": "Group mean changes from baseline in the primary efficacy parameters",
                 "analysisPopulationId": "AnalysisPopulation_1",
-                "interventionIds": [
-                  "StudyIntervention_1"
-                ],
+                "interventionIds": ["StudyIntervention_1"],
                 "variableOfInterestId": "Endpoint_1",
                 "intercurrentEvents": [
                   {
@@ -2262,9 +2224,7 @@
                 "instanceType": "Indication"
               }
             ],
-            "studyInterventionIds": [
-              "StudyIntervention_1"
-            ],
+            "studyInterventionIds": ["StudyIntervention_1"],
             "objectives": [
               {
                 "id": "Objective_1",
@@ -3346,10 +3306,7 @@
                     "instanceType": "ScheduledActivityInstance",
                     "timelineId": null,
                     "timelineExitId": null,
-                    "activityIds": [
-                      "Activity_13",
-                      "Activity_14"
-                    ],
+                    "activityIds": ["Activity_13", "Activity_14"],
                     "encounterId": "Encounter_2"
                   },
                   {
@@ -3484,9 +3441,7 @@
                     "instanceType": "ScheduledActivityInstance",
                     "timelineId": null,
                     "timelineExitId": null,
-                    "activityIds": [
-                      "Activity_30"
-                    ],
+                    "activityIds": ["Activity_30"],
                     "encounterId": "Encounter_7"
                   },
                   {
@@ -3524,9 +3479,7 @@
                     "instanceType": "ScheduledActivityInstance",
                     "timelineId": null,
                     "timelineExitId": null,
-                    "activityIds": [
-                      "Activity_30"
-                    ],
+                    "activityIds": ["Activity_30"],
                     "encounterId": "Encounter_8"
                   },
                   {
@@ -3565,9 +3518,7 @@
                     "instanceType": "ScheduledActivityInstance",
                     "timelineId": null,
                     "timelineExitId": null,
-                    "activityIds": [
-                      "Activity_30"
-                    ],
+                    "activityIds": ["Activity_30"],
                     "encounterId": "Encounter_9"
                   },
                   {
@@ -3604,9 +3555,7 @@
                     "instanceType": "ScheduledActivityInstance",
                     "timelineId": null,
                     "timelineExitId": null,
-                    "activityIds": [
-                      "Activity_30"
-                    ],
+                    "activityIds": ["Activity_30"],
                     "encounterId": "Encounter_10"
                   },
                   {
@@ -3725,9 +3674,7 @@
                     "instanceType": "ScheduledActivityInstance",
                     "timelineId": null,
                     "timelineExitId": "ScheduleTimelineExit_1",
-                    "activityIds": [
-                      "Activity_31"
-                    ],
+                    "activityIds": ["Activity_31"],
                     "encounterId": null
                   }
                 ],
@@ -4046,9 +3993,7 @@
                     "instanceType": "ScheduledActivityInstance",
                     "timelineId": null,
                     "timelineExitId": null,
-                    "activityIds": [
-                      "Activity_33"
-                    ],
+                    "activityIds": ["Activity_33"],
                     "encounterId": null
                   },
                   {
@@ -4062,9 +4007,7 @@
                     "instanceType": "ScheduledActivityInstance",
                     "timelineId": null,
                     "timelineExitId": null,
-                    "activityIds": [
-                      "Activity_34"
-                    ],
+                    "activityIds": ["Activity_34"],
                     "encounterId": null
                   },
                   {
@@ -4078,9 +4021,7 @@
                     "instanceType": "ScheduledActivityInstance",
                     "timelineId": null,
                     "timelineExitId": null,
-                    "activityIds": [
-                      "Activity_35"
-                    ],
+                    "activityIds": ["Activity_35"],
                     "encounterId": null
                   },
                   {
@@ -4094,9 +4035,7 @@
                     "instanceType": "ScheduledActivityInstance",
                     "timelineId": null,
                     "timelineExitId": null,
-                    "activityIds": [
-                      "Activity_36"
-                    ],
+                    "activityIds": ["Activity_36"],
                     "encounterId": null
                   },
                   {
@@ -4110,9 +4049,7 @@
                     "instanceType": "ScheduledActivityInstance",
                     "timelineId": null,
                     "timelineExitId": null,
-                    "activityIds": [
-                      "Activity_35"
-                    ],
+                    "activityIds": ["Activity_35"],
                     "encounterId": null
                   },
                   {
@@ -4126,9 +4063,7 @@
                     "instanceType": "ScheduledActivityInstance",
                     "timelineId": null,
                     "timelineExitId": "ScheduleTimelineExit_3",
-                    "activityIds": [
-                      "Activity_36"
-                    ],
+                    "activityIds": ["Activity_36"],
                     "encounterId": null
                   }
                 ],
@@ -4829,9 +4764,7 @@
                 "label": null,
                 "description": null,
                 "text": "Patients with Mild to Moderate Alzheimer\u2019s Disease.",
-                "subsetOfIds": [
-                  "StudyDesignPopulation_1"
-                ],
+                "subsetOfIds": ["StudyDesignPopulation_1"],
                 "notes": [],
                 "instanceType": "AnalysisPopulation"
               }
@@ -5925,9 +5858,7 @@
             },
             "appliesToIds": [],
             "assignedPersons": [],
-            "organizationIds": [
-              "Organization_1"
-            ],
+            "organizationIds": ["Organization_1"],
             "masking": {
               "id": "Masking_1",
               "extensionAttributes": [],
@@ -5959,9 +5890,7 @@
               "id": "Address_1",
               "extensionAttributes": [],
               "text": "Lilly Corporate Ctr, Indianapolis, , IN, 4628, United States of America",
-              "lines": [
-                "Lilly Corporate Ctr"
-              ],
+              "lines": ["Lilly Corporate Ctr"],
               "city": "Indianapolis",
               "district": "",
               "state": "IN",
@@ -6000,9 +5929,7 @@
               "id": "Address_2",
               "extensionAttributes": [],
               "text": "National Library of Medicine, Bethesda, 8600 Rockville Pike, MD, 20894, United States of America",
-              "lines": [
-                "National Library of Medicine"
-              ],
+              "lines": ["National Library of Medicine"],
               "city": "Bethesda",
               "district": "8600 Rockville Pike",
               "state": "MD",
@@ -6041,9 +5968,7 @@
               "id": "Address_3",
               "extensionAttributes": [],
               "text": "line, city, district, state, postal_code, United Kingdom of Great Britain and Northern Ireland",
-              "lines": [
-                "line"
-              ],
+              "lines": ["line"],
               "city": "city",
               "district": "district",
               "state": "state",
@@ -6420,9 +6345,7 @@
             "extensionAttributes": [],
             "name": "Race",
             "label": "Race",
-            "synonyms": [
-              "Racial Group"
-            ],
+            "synonyms": ["Racial Group"],
             "reference": "/mdr/bc/packages/2023-03-31/biomedicalconcepts/C17049",
             "properties": [
               {
@@ -6476,10 +6399,7 @@
             "extensionAttributes": [],
             "name": "Temperature",
             "label": "Temperature",
-            "synonyms": [
-              "Temperature",
-              "Body Temperature"
-            ],
+            "synonyms": ["Temperature", "Body Temperature"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/TEMP",
             "properties": [
               {
@@ -6736,10 +6656,7 @@
             "extensionAttributes": [],
             "name": "Weight",
             "label": "Weight",
-            "synonyms": [
-              "Weight",
-              "Body Weight"
-            ],
+            "synonyms": ["Weight", "Body Weight"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/WEIGHT",
             "properties": [
               {
@@ -6893,10 +6810,7 @@
             "extensionAttributes": [],
             "name": "Height",
             "label": "Height",
-            "synonyms": [
-              "Height",
-              "Body Height"
-            ],
+            "synonyms": ["Height", "Body Height"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/HEIGHT",
             "properties": [
               {
@@ -7050,11 +6964,7 @@
             "extensionAttributes": [],
             "name": "Alanine Aminotransferase Concentration in Serum/Plasma",
             "label": "Alanine Aminotransferase Concentration in Serum/Plasma",
-            "synonyms": [
-              "ALT",
-              "SGPT",
-              "Alanine Aminotransferase Measurement"
-            ],
+            "synonyms": ["ALT", "SGPT", "Alanine Aminotransferase Measurement"],
             "reference": "/mdr/specializations/sdtm/packages/2023-07-06/datasetspecializations/ALTSERPL",
             "properties": [
               {
@@ -7308,10 +7218,7 @@
             "extensionAttributes": [],
             "name": "Albumin Presence in Urine",
             "label": "Albumin Presence in Urine",
-            "synonyms": [
-              "Albumin",
-              "Albumin Measurement"
-            ],
+            "synonyms": ["Albumin", "Albumin Measurement"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/ALBURINPRES",
             "properties": [
               {
@@ -7962,10 +7869,7 @@
             "extensionAttributes": [],
             "name": "Creatinine Concentration in Urine",
             "label": "Creatinine Concentration in Urine",
-            "synonyms": [
-              "Creatinine",
-              "Creatinine Measurement"
-            ],
+            "synonyms": ["Creatinine", "Creatinine Measurement"],
             "reference": "/mdr/specializations/sdtm/packages/2023-10-03/datasetspecializations/CREATURIN",
             "properties": [
               {
@@ -8219,11 +8123,7 @@
             "extensionAttributes": [],
             "name": "Potassium Concentration in Urine",
             "label": "Potassium Concentration in Urine",
-            "synonyms": [
-              "Potassium",
-              "K",
-              "Potassium Measurement"
-            ],
+            "synonyms": ["Potassium", "K", "Potassium Measurement"],
             "reference": "/mdr/specializations/sdtm/packages/2023-07-06/datasetspecializations/KURIN",
             "properties": [
               {
@@ -8462,11 +8362,7 @@
             "extensionAttributes": [],
             "name": "Sodium Concentration in Urine",
             "label": "Sodium Concentration in Urine",
-            "synonyms": [
-              "Sodium",
-              "NA",
-              "Sodium Measurement"
-            ],
+            "synonyms": ["Sodium", "NA", "Sodium Measurement"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/SODIUMURIN",
             "properties": [
               {
@@ -8919,10 +8815,7 @@
             "extensionAttributes": [],
             "name": "Adverse Event Prespecified",
             "label": "Adverse Event Prespecified",
-            "synonyms": [
-              "Adverse Event",
-              "Solicited Adverse Event"
-            ],
+            "synonyms": ["Adverse Event", "Solicited Adverse Event"],
             "reference": "/mdr/specializations/sdtm/packages/2023-10-03/datasetspecializations/AEPRESP",
             "properties": [
               {
@@ -9911,10 +9804,7 @@
             "extensionAttributes": [],
             "name": "Systolic Blood Pressure",
             "label": "Systolic Blood Pressure",
-            "synonyms": [
-              "SYSBP",
-              "Systolic Blood Pressure"
-            ],
+            "synonyms": ["SYSBP", "Systolic Blood Pressure"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/SYSBP",
             "properties": [
               {
@@ -10256,10 +10146,7 @@
             "extensionAttributes": [],
             "name": "Diastolic Blood Pressure",
             "label": "Diastolic Blood Pressure",
-            "synonyms": [
-              "DIABP",
-              "Diastolic Blood Pressure"
-            ],
+            "synonyms": ["DIABP", "Diastolic Blood Pressure"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/DIABP",
             "properties": [
               {
@@ -10601,10 +10488,7 @@
             "extensionAttributes": [],
             "name": "Temperature",
             "label": "Temperature",
-            "synonyms": [
-              "Temperature",
-              "Body Temperature"
-            ],
+            "synonyms": ["Temperature", "Body Temperature"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/TEMP",
             "properties": [
               {
@@ -10861,10 +10745,7 @@
             "extensionAttributes": [],
             "name": "Weight",
             "label": "Weight",
-            "synonyms": [
-              "Weight",
-              "Body Weight"
-            ],
+            "synonyms": ["Weight", "Body Weight"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/WEIGHT",
             "properties": [
               {
@@ -11018,10 +10899,7 @@
             "extensionAttributes": [],
             "name": "Height",
             "label": "Height",
-            "synonyms": [
-              "Height",
-              "Body Height"
-            ],
+            "synonyms": ["Height", "Body Height"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/HEIGHT",
             "properties": [
               {
@@ -11175,11 +11053,7 @@
             "extensionAttributes": [],
             "name": "Alanine Aminotransferase Concentration in Serum/Plasma",
             "label": "Alanine Aminotransferase Concentration in Serum/Plasma",
-            "synonyms": [
-              "ALT",
-              "SGPT",
-              "Alanine Aminotransferase Measurement"
-            ],
+            "synonyms": ["ALT", "SGPT", "Alanine Aminotransferase Measurement"],
             "reference": "/mdr/specializations/sdtm/packages/2023-07-06/datasetspecializations/ALTSERPL",
             "properties": [
               {
@@ -11433,10 +11307,7 @@
             "extensionAttributes": [],
             "name": "Albumin Presence in Urine",
             "label": "Albumin Presence in Urine",
-            "synonyms": [
-              "Albumin",
-              "Albumin Measurement"
-            ],
+            "synonyms": ["Albumin", "Albumin Measurement"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/ALBURINPRES",
             "properties": [
               {
@@ -12087,10 +11958,7 @@
             "extensionAttributes": [],
             "name": "Creatinine Concentration in Urine",
             "label": "Creatinine Concentration in Urine",
-            "synonyms": [
-              "Creatinine",
-              "Creatinine Measurement"
-            ],
+            "synonyms": ["Creatinine", "Creatinine Measurement"],
             "reference": "/mdr/specializations/sdtm/packages/2023-10-03/datasetspecializations/CREATURIN",
             "properties": [
               {
@@ -12344,11 +12212,7 @@
             "extensionAttributes": [],
             "name": "Potassium Concentration in Urine",
             "label": "Potassium Concentration in Urine",
-            "synonyms": [
-              "Potassium",
-              "K",
-              "Potassium Measurement"
-            ],
+            "synonyms": ["Potassium", "K", "Potassium Measurement"],
             "reference": "/mdr/specializations/sdtm/packages/2023-07-06/datasetspecializations/KURIN",
             "properties": [
               {
@@ -12587,11 +12451,7 @@
             "extensionAttributes": [],
             "name": "Sodium Concentration in Urine",
             "label": "Sodium Concentration in Urine",
-            "synonyms": [
-              "Sodium",
-              "NA",
-              "Sodium Measurement"
-            ],
+            "synonyms": ["Sodium", "NA", "Sodium Measurement"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/SODIUMURIN",
             "properties": [
               {
@@ -12830,10 +12690,7 @@
             "extensionAttributes": [],
             "name": "Systolic Blood Pressure",
             "label": "Systolic Blood Pressure",
-            "synonyms": [
-              "SYSBP",
-              "Systolic Blood Pressure"
-            ],
+            "synonyms": ["SYSBP", "Systolic Blood Pressure"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/SYSBP",
             "properties": [
               {
@@ -13175,10 +13032,7 @@
             "extensionAttributes": [],
             "name": "Diastolic Blood Pressure",
             "label": "Diastolic Blood Pressure",
-            "synonyms": [
-              "DIABP",
-              "Diastolic Blood Pressure"
-            ],
+            "synonyms": ["DIABP", "Diastolic Blood Pressure"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/DIABP",
             "properties": [
               {
@@ -13520,9 +13374,7 @@
             "extensionAttributes": [],
             "name": "Heart Rate",
             "label": "Heart Rate",
-            "synonyms": [
-              "Heart Rate"
-            ],
+            "synonyms": ["Heart Rate"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/HR",
             "properties": [
               {
@@ -13864,10 +13716,7 @@
             "extensionAttributes": [],
             "name": "Systolic Blood Pressure",
             "label": "Systolic Blood Pressure",
-            "synonyms": [
-              "SYSBP",
-              "Systolic Blood Pressure"
-            ],
+            "synonyms": ["SYSBP", "Systolic Blood Pressure"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/SYSBP",
             "properties": [
               {
@@ -14209,10 +14058,7 @@
             "extensionAttributes": [],
             "name": "Diastolic Blood Pressure",
             "label": "Diastolic Blood Pressure",
-            "synonyms": [
-              "DIABP",
-              "Diastolic Blood Pressure"
-            ],
+            "synonyms": ["DIABP", "Diastolic Blood Pressure"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/DIABP",
             "properties": [
               {
@@ -14554,9 +14400,7 @@
             "extensionAttributes": [],
             "name": "Heart Rate",
             "label": "Heart Rate",
-            "synonyms": [
-              "Heart Rate"
-            ],
+            "synonyms": ["Heart Rate"],
             "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/HR",
             "properties": [
               {
@@ -14975,12 +14819,8 @@
             "dictionaryId": null,
             "notes": [],
             "instanceType": "Condition",
-            "contextIds": [
-              "ScheduledActivityInstance_9"
-            ],
-            "appliesToIds": [
-              "Activity_24"
-            ]
+            "contextIds": ["ScheduledActivityInstance_9"],
+            "appliesToIds": ["Activity_24"]
           },
           {
             "id": "Condition_2",
@@ -14992,9 +14832,7 @@
             "dictionaryId": null,
             "notes": [],
             "instanceType": "Condition",
-            "contextIds": [
-              "ScheduledActivityInstance_9"
-            ],
+            "contextIds": ["ScheduledActivityInstance_9"],
             "appliesToIds": [
               "Activity_27",
               "Activity_28",
@@ -15135,10 +14973,7 @@
                 "sectionTitle": "Objectives",
                 "displaySectionNumber": true,
                 "displaySectionTitle": true,
-                "childIds": [
-                  "NarrativeContent_4",
-                  "NarrativeContent_5"
-                ],
+                "childIds": ["NarrativeContent_4", "NarrativeContent_5"],
                 "previousId": "NarrativeContent_2",
                 "nextId": "NarrativeContent_4",
                 "contentItemId": "NarrativeContentItem_3",
@@ -15234,9 +15069,7 @@
                 "sectionTitle": "Investigator Information",
                 "displaySectionNumber": true,
                 "displaySectionTitle": true,
-                "childIds": [
-                  "NarrativeContent_10"
-                ],
+                "childIds": ["NarrativeContent_10"],
                 "previousId": "NarrativeContent_8",
                 "nextId": "NarrativeContent_10",
                 "contentItemId": "NarrativeContentItem_9",
@@ -15399,10 +15232,7 @@
                 "sectionTitle": "Dosage and Administration",
                 "displaySectionNumber": true,
                 "displaySectionTitle": true,
-                "childIds": [
-                  "NarrativeContent_21",
-                  "NarrativeContent_22"
-                ],
+                "childIds": ["NarrativeContent_21", "NarrativeContent_22"],
                 "previousId": "NarrativeContent_19",
                 "nextId": "NarrativeContent_21",
                 "contentItemId": "NarrativeContentItem_20",
@@ -15492,10 +15322,7 @@
                 "sectionTitle": "Efficacy",
                 "displaySectionNumber": true,
                 "displaySectionTitle": true,
-                "childIds": [
-                  "NarrativeContent_27",
-                  "NarrativeContent_28"
-                ],
+                "childIds": ["NarrativeContent_27", "NarrativeContent_28"],
                 "previousId": "NarrativeContent_25",
                 "nextId": "NarrativeContent_27",
                 "contentItemId": "NarrativeContentItem_26",
@@ -15584,10 +15411,7 @@
                 "sectionTitle": "Clinical Adverse Events",
                 "displaySectionNumber": true,
                 "displaySectionTitle": true,
-                "childIds": [
-                  "NarrativeContent_33",
-                  "NarrativeContent_34"
-                ],
+                "childIds": ["NarrativeContent_33", "NarrativeContent_34"],
                 "previousId": "NarrativeContent_31",
                 "nextId": "NarrativeContent_33",
                 "contentItemId": "NarrativeContentItem_32",
@@ -15643,10 +15467,7 @@
                 "sectionTitle": "Other Safety Measures",
                 "displaySectionNumber": true,
                 "displaySectionTitle": true,
-                "childIds": [
-                  "NarrativeContent_37",
-                  "NarrativeContent_38"
-                ],
+                "childIds": ["NarrativeContent_37", "NarrativeContent_38"],
                 "previousId": "NarrativeContent_35",
                 "nextId": "NarrativeContent_37",
                 "contentItemId": "NarrativeContentItem_36",
@@ -15734,9 +15555,7 @@
                 "sectionTitle": "Discontinuations",
                 "displaySectionNumber": true,
                 "displaySectionTitle": true,
-                "childIds": [
-                  "NarrativeContent_43"
-                ],
+                "childIds": ["NarrativeContent_43"],
                 "previousId": "NarrativeContent_41",
                 "nextId": "NarrativeContent_43",
                 "contentItemId": "NarrativeContentItem_42",
@@ -15778,9 +15597,7 @@
                 "sectionTitle": "Study Extensions",
                 "displaySectionNumber": true,
                 "displaySectionTitle": true,
-                "childIds": [
-                  "NarrativeContent_46"
-                ],
+                "childIds": ["NarrativeContent_46"],
                 "previousId": "NarrativeContent_44",
                 "nextId": "NarrativeContent_46",
                 "contentItemId": "NarrativeContentItem_45",
@@ -16379,10 +16196,7 @@
                 "sectionTitle": "Protocol Synopsis",
                 "displaySectionNumber": true,
                 "displaySectionTitle": true,
-                "childIds": [
-                  "NarrativeContent_80",
-                  "NarrativeContent_81"
-                ],
+                "childIds": ["NarrativeContent_80", "NarrativeContent_81"],
                 "previousId": "NarrativeContent_78",
                 "nextId": "NarrativeContent_80",
                 "contentItemId": null,
@@ -16452,10 +16266,7 @@
                 "sectionTitle": "INTRODUCTION",
                 "displaySectionNumber": true,
                 "displaySectionTitle": true,
-                "childIds": [
-                  "NarrativeContent_85",
-                  "NarrativeContent_86"
-                ],
+                "childIds": ["NarrativeContent_85", "NarrativeContent_86"],
                 "previousId": "NarrativeContent_83",
                 "nextId": "NarrativeContent_85",
                 "contentItemId": null,
@@ -16561,9 +16372,7 @@
                 "sectionTitle": "Primary Objective(s) and Associated Estimand(s)",
                 "displaySectionNumber": true,
                 "displaySectionTitle": true,
-                "childIds": [
-                  "NarrativeContent_92"
-                ],
+                "childIds": ["NarrativeContent_92"],
                 "previousId": "NarrativeContent_90",
                 "nextId": "NarrativeContent_92",
                 "contentItemId": "NarrativeContentItem_81",
@@ -16639,9 +16448,7 @@
                 "sectionTitle": "Description of Trial Design",
                 "displaySectionNumber": true,
                 "displaySectionTitle": true,
-                "childIds": [
-                  "NarrativeContent_97"
-                ],
+                "childIds": ["NarrativeContent_97"],
                 "previousId": "NarrativeContent_95",
                 "nextId": "NarrativeContent_97",
                 "contentItemId": "NarrativeContentItem_83",
@@ -16894,10 +16701,7 @@
                 "sectionTitle": "Contraception",
                 "displaySectionNumber": true,
                 "displaySectionTitle": true,
-                "childIds": [
-                  "NarrativeContent_114",
-                  "NarrativeContent_115"
-                ],
+                "childIds": ["NarrativeContent_114", "NarrativeContent_115"],
                 "previousId": "NarrativeContent_112",
                 "nextId": "NarrativeContent_114",
                 "contentItemId": null,
@@ -17347,10 +17151,7 @@
                 "sectionTitle": "Concomitant Therapy",
                 "displaySectionNumber": true,
                 "displaySectionTitle": true,
-                "childIds": [
-                  "NarrativeContent_144",
-                  "NarrativeContent_145"
-                ],
+                "childIds": ["NarrativeContent_144", "NarrativeContent_145"],
                 "previousId": "NarrativeContent_142",
                 "nextId": "NarrativeContent_144",
                 "contentItemId": null,
@@ -17999,10 +17800,7 @@
                 "sectionTitle": "Pregnancy and Postpartum Information",
                 "displaySectionNumber": true,
                 "displaySectionTitle": true,
-                "childIds": [
-                  "NarrativeContent_187",
-                  "NarrativeContent_188"
-                ],
+                "childIds": ["NarrativeContent_187", "NarrativeContent_188"],
                 "previousId": "NarrativeContent_185",
                 "nextId": "NarrativeContent_187",
                 "contentItemId": null,
@@ -18415,10 +18213,7 @@
                 "sectionTitle": "Trial Oversight",
                 "displaySectionNumber": true,
                 "displaySectionTitle": true,
-                "childIds": [
-                  "NarrativeContent_214",
-                  "NarrativeContent_215"
-                ],
+                "childIds": ["NarrativeContent_214", "NarrativeContent_215"],
                 "previousId": "NarrativeContent_212",
                 "nextId": "NarrativeContent_214",
                 "contentItemId": null,
@@ -18460,10 +18255,7 @@
                 "sectionTitle": "Informed Consent Process",
                 "displaySectionNumber": true,
                 "displaySectionTitle": true,
-                "childIds": [
-                  "NarrativeContent_217",
-                  "NarrativeContent_218"
-                ],
+                "childIds": ["NarrativeContent_217", "NarrativeContent_218"],
                 "previousId": "NarrativeContent_215",
                 "nextId": "NarrativeContent_217",
                 "contentItemId": null,

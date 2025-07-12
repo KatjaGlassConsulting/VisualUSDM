@@ -5,6 +5,7 @@
   "description": "Creating a Visual USDM Editor",
   "scripts": {
     "dev": "next dev",
+    "prebuild": "npm run format",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

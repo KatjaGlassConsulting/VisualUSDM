@@ -7,10 +7,8 @@ interface ClientThemeProviderProps {
   children: React.ReactNode;
 }
 
-export default function ClientThemeProvider({ children }: ClientThemeProviderProps) {
-  return (
-    <ThemeProvider theme={theme}>
-      {children}
-    </ThemeProvider>
-  );
+export default function ClientThemeProvider({
+  children,
+}: ClientThemeProviderProps) {
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }

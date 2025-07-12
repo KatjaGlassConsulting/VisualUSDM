@@ -31,43 +31,44 @@ export default function AboutPage() {
             About Visual USDM Editor
           </Typography>
         </Box>
-        
+
         <Paper sx={{ p: 4, mb: 4 }}>
           <Typography variant="h4" component="h2" gutterBottom>
             What is USDM?
           </Typography>
           <Typography variant="body1" sx={{ mb: 3 }}>
-            The Unified Study Definition Model (USDM) is a CDISC (Clinical Data Interchange Standards Consortium) 
-            standard that provides a comprehensive framework for defining clinical studies. It serves as a common 
-            language for describing study designs, activities, and data collection procedures across different 
-            systems and organizations.
+            The Unified Study Definition Model (USDM) is a CDISC (Clinical Data
+            Interchange Standards Consortium) standard that provides a
+            comprehensive framework for defining clinical studies. It serves as
+            a common language for describing study designs, activities, and data
+            collection procedures across different systems and organizations.
           </Typography>
-          
+
           <Typography variant="h5" component="h3" gutterBottom>
             Key Benefits of USDM:
           </Typography>
           <List>
             <ListItem>
-              <ListItemText 
-                primary="Standardization" 
+              <ListItemText
+                primary="Standardization"
                 secondary="Provides a consistent way to describe clinical studies across different platforms and organizations"
               />
             </ListItem>
             <ListItem>
-              <ListItemText 
-                primary="Interoperability" 
+              <ListItemText
+                primary="Interoperability"
                 secondary="Enables seamless data exchange between different clinical trial management systems"
               />
             </ListItem>
             <ListItem>
-              <ListItemText 
-                primary="Efficiency" 
+              <ListItemText
+                primary="Efficiency"
                 secondary="Reduces time and effort in study setup and management through standardized definitions"
               />
             </ListItem>
             <ListItem>
-              <ListItemText 
-                primary="Quality" 
+              <ListItemText
+                primary="Quality"
                 secondary="Improves data quality and consistency through structured study definitions"
               />
             </ListItem>
@@ -80,11 +81,12 @@ export default function AboutPage() {
               About This Editor
             </Typography>
             <Typography variant="body1" sx={{ mb: 3 }}>
-              The Visual USDM Editor is designed to make working with USDM documents more accessible and intuitive. 
-              Instead of manually editing complex JSON files, users can leverage a visual interface to create, 
-              modify, and validate their clinical study definitions.
+              The Visual USDM Editor is designed to make working with USDM
+              documents more accessible and intuitive. Instead of manually
+              editing complex JSON files, users can leverage a visual interface
+              to create, modify, and validate their clinical study definitions.
             </Typography>
-            
+
             <Typography variant="h5" component="h3" gutterBottom>
               Features:
             </Typography>
@@ -109,26 +111,26 @@ export default function AboutPage() {
             </Typography>
             <List>
               <ListItem>
-                <ListItemText 
-                  primary="Next.js 15" 
+                <ListItemText
+                  primary="Next.js 15"
                   secondary="Modern React framework with App Router for server-side rendering and optimal performance"
                 />
               </ListItem>
               <ListItem>
-                <ListItemText 
-                  primary="React 18" 
+                <ListItemText
+                  primary="React 18"
                   secondary="Latest UI library with concurrent features and improved performance"
                 />
               </ListItem>
               <ListItem>
-                <ListItemText 
-                  primary="Material-UI (MUI) v6" 
+                <ListItemText
+                  primary="Material-UI (MUI) v6"
                   secondary="Latest comprehensive React component library following Material Design 3"
                 />
               </ListItem>
               <ListItem>
-                <ListItemText 
-                  primary="TypeScript 5" 
+                <ListItemText
+                  primary="TypeScript 5"
                   secondary="Latest type-safe JavaScript for better development experience"
                 />
               </ListItem>
@@ -145,9 +147,13 @@ export default function AboutPage() {
           </Typography>
           <List>
             <ListItem>
-              <ListItemText 
+              <ListItemText
                 primary={
-                  <Link href="https://www.cdisc.org/" target="_blank" rel="noopener noreferrer">
+                  <Link
+                    href="https://www.cdisc.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     CDISC Official Website
                   </Link>
                 }
@@ -155,9 +161,13 @@ export default function AboutPage() {
               />
             </ListItem>
             <ListItem>
-              <ListItemText 
+              <ListItemText
                 primary={
-                  <Link href="https://github.com/cdisc-org/DDF-RA" target="_blank" rel="noopener noreferrer">
+                  <Link
+                    href="https://github.com/cdisc-org/DDF-RA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     CDISC DDF Repository
                   </Link>
                 }
@@ -165,7 +175,7 @@ export default function AboutPage() {
               />
             </ListItem>
             <ListItem>
-              <ListItemText 
+              <ListItemText
                 primary="Example Files"
                 secondary="Check the Example/ folder in this repository for sample USDM documents"
               />

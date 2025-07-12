@@ -22,21 +22,21 @@ export const safeParseJSON = (jsonString: string) => {
  */
 export const formatDateForInput = (dateValue: string): string => {
   if (!dateValue) return '';
-  
+
   // If it's already in yyyy-mm-dd format, return as is
   if (/^\d{4}-\d{2}-\d{2}$/.test(dateValue)) {
     return dateValue;
   }
-  
+
   // Try to parse and format the date
   try {
     const date = new Date(dateValue);
     if (isNaN(date.getTime())) return dateValue;
-    
+
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
-    
+
     return `${year}-${month}-${day}`;
   } catch (error) {
     return dateValue;
@@ -50,19 +50,23 @@ export const formatDateForInput = (dateValue: string): string => {
  * @param value - The new value to set
  * @returns Updated data object
  */
-export const updateNestedField = (data: any, path: (string | number)[], value: any): any => {
+export const updateNestedField = (
+  data: any,
+  path: (string | number)[],
+  value: any
+): any => {
   const updated = { ...data };
   let current = updated;
-  
+
   // Navigate to the parent object
   for (let i = 0; i < path.length - 1; i++) {
     if (!current[path[i]]) current[path[i]] = {};
     current = current[path[i]];
   }
-  
+
   // Set the value
   current[path[path.length - 1]] = value;
-  
+
   return updated;
 };
 
@@ -73,16 +77,20 @@ export const updateNestedField = (data: any, path: (string | number)[], value: a
  * @param defaultValue - Default value if field doesn't exist
  * @returns Field value or default value
  */
-export const getNestedField = (data: any, path: (string | number)[], defaultValue: any = undefined): any => {
+export const getNestedField = (
+  data: any,
+  path: (string | number)[],
+  defaultValue: any = undefined
+): any => {
   let current = data;
-  
+
   for (const key of path) {
     if (!current || current[key] === undefined) {
       return defaultValue;
     }
     current = current[key];
   }
-  
+
   return current;
 };
 
@@ -92,9 +100,12 @@ export const getNestedField = (data: any, path: (string | number)[], defaultValu
  * @param delay - Delay in milliseconds
  * @returns Debounced function
  */
-export const debounce = <T extends (...args: any[]) => any>(func: T, delay: number): T => {
+export const debounce = <T extends (...args: any[]) => any>(
+  func: T,
+  delay: number
+): T => {
   let timeoutId: NodeJS.Timeout;
-  
+
   return ((...args: any[]) => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => func.apply(null, args), delay);
@@ -106,19 +117,22 @@ export const debounce = <T extends (...args: any[]) => any>(func: T, delay: numb
  * @param data - USDM data to export
  * @param filename - Optional filename (defaults to usdm-export.json)
  */
-export const exportUSDMAsJSON = (data: any, filename: string = 'usdm-export.json'): void => {
+export const exportUSDMAsJSON = (
+  data: any,
+  filename: string = 'usdm-export.json'
+): void => {
   try {
     const jsonString = JSON.stringify(data, null, 2);
     const blob = new Blob([jsonString], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
-    
+
     const link = document.createElement('a');
     link.href = url;
     link.download = filename;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    
+
     URL.revokeObjectURL(url);
   } catch (error) {
     console.error('Error exporting USDM data:', error);
@@ -131,28 +145,30 @@ export const exportUSDMAsJSON = (data: any, filename: string = 'usdm-export.json
  * @param data - USDM data to validate
  * @returns Validation result with success flag and error message
  */
-export const validateUSDMData = (data: any): { isValid: boolean; error?: string } => {
+export const validateUSDMData = (
+  data: any
+): { isValid: boolean; error?: string } => {
   if (!data) {
     return { isValid: false, error: 'No data provided' };
   }
-  
+
   if (typeof data !== 'object') {
     return { isValid: false, error: 'Data must be an object' };
   }
-  
+
   // Check for required study structure
   if (!data.study) {
     return { isValid: false, error: 'Missing study object' };
   }
-  
+
   if (!data.study.versions || !Array.isArray(data.study.versions)) {
     return { isValid: false, error: 'Missing or invalid study versions array' };
   }
-  
+
   if (data.study.versions.length === 0) {
     return { isValid: false, error: 'Study must have at least one version' };
   }
-  
+
   return { isValid: true };
 };
 
@@ -162,15 +178,18 @@ export const validateUSDMData = (data: any): { isValid: boolean; error?: string 
  * @param existingIds - Array of existing IDs to avoid duplicates
  * @returns Unique ID string
  */
-export const generateUniqueId = (prefix: string, existingIds: string[] = []): string => {
+export const generateUniqueId = (
+  prefix: string,
+  existingIds: string[] = []
+): string => {
   let counter = 1;
   let newId = `${prefix}_${counter}`;
-  
+
   while (existingIds.includes(newId)) {
     counter++;
     newId = `${prefix}_${counter}`;
   }
-  
+
   return newId;
 };
 
@@ -183,15 +202,15 @@ export const deepClone = <T>(obj: T): T => {
   if (obj === null || typeof obj !== 'object') {
     return obj;
   }
-  
+
   if (obj instanceof Date) {
     return new Date(obj.getTime()) as unknown as T;
   }
-  
+
   if (obj instanceof Array) {
-    return obj.map(item => deepClone(item)) as unknown as T;
+    return obj.map((item) => deepClone(item)) as unknown as T;
   }
-  
+
   if (typeof obj === 'object') {
     const cloned = {} as T;
     for (const key in obj) {
@@ -201,7 +220,7 @@ export const deepClone = <T>(obj: T): T => {
     }
     return cloned;
   }
-  
+
   return obj;
 };
 
@@ -215,40 +234,40 @@ export const deepEqual = (obj1: any, obj2: any): boolean => {
   if (obj1 === obj2) {
     return true;
   }
-  
+
   if (obj1 == null || obj2 == null) {
     return obj1 === obj2;
   }
-  
+
   if (typeof obj1 !== typeof obj2) {
     return false;
   }
-  
+
   if (typeof obj1 !== 'object') {
     return obj1 === obj2;
   }
-  
+
   if (Array.isArray(obj1) !== Array.isArray(obj2)) {
     return false;
   }
-  
+
   const keys1 = Object.keys(obj1);
   const keys2 = Object.keys(obj2);
-  
+
   if (keys1.length !== keys2.length) {
     return false;
   }
-  
+
   for (const key of keys1) {
     if (!keys2.includes(key)) {
       return false;
     }
-    
+
     if (!deepEqual(obj1[key], obj2[key])) {
       return false;
     }
   }
-  
+
   return true;
 };
 
@@ -258,9 +277,12 @@ export const deepEqual = (obj1: any, obj2: any): boolean => {
  * @param fallback - Fallback text if no display text found
  * @returns Display text
  */
-export const getDisplayText = (element: any, fallback: string = 'Unnamed'): string => {
+export const getDisplayText = (
+  element: any,
+  fallback: string = 'Unnamed'
+): string => {
   if (!element) return fallback;
-  
+
   return element.label || element.name || element.id || fallback;
 };
 
@@ -270,8 +292,11 @@ export const getDisplayText = (element: any, fallback: string = 'Unnamed'): stri
  * @param fallback - Fallback text if no code information found
  * @returns Formatted code text
  */
-export const formatCodeDisplay = (codeObj: any, fallback: string = 'No code available'): string => {
+export const formatCodeDisplay = (
+  codeObj: any,
+  fallback: string = 'No code available'
+): string => {
   if (!codeObj) return fallback;
-  
+
   return codeObj.decode || codeObj.code || fallback;
 };

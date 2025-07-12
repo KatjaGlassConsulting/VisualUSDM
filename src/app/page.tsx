@@ -56,23 +56,38 @@ export default function HomePage() {
         <Typography variant="h2" component="h1" gutterBottom align="center">
           Visual USDM Editor
         </Typography>
-        <Typography variant="h5" component="h2" gutterBottom align="center" color="textSecondary">
+        <Typography
+          variant="h5"
+          component="h2"
+          gutterBottom
+          align="center"
+          color="textSecondary"
+        >
           Creating a Visual USDM Editor for Clinical Trials
         </Typography>
-        
+
         <Grid container spacing={4} sx={{ mt: 4 }}>
           <Grid item xs={12} md={4}>
-            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-              <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+            <Card
+              sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+            >
+              <CardContent
+                sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}
+              >
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                   <FileOpen sx={{ mr: 1, color: 'primary.main' }} />
                   <Typography variant="h5" component="h3">
                     Visual Editor
                   </Typography>
                 </Box>
-                <Typography variant="body1" color="textSecondary" sx={{ flexGrow: 1, mb: 2 }}>
-                  Import your existing USDM JSON files and edit them with an intuitive visual interface.
-                  Upload your files to get started with the visual editor.
+                <Typography
+                  variant="body1"
+                  color="textSecondary"
+                  sx={{ flexGrow: 1, mb: 2 }}
+                >
+                  Import your existing USDM JSON files and edit them with an
+                  intuitive visual interface. Upload your files to get started
+                  with the visual editor.
                 </Typography>
                 <Box>
                   <input
@@ -94,19 +109,27 @@ export default function HomePage() {
               </CardContent>
             </Card>
           </Grid>
-          
+
           <Grid item xs={12} md={4}>
-            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-              <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+            <Card
+              sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+            >
+              <CardContent
+                sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}
+              >
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                   <CloudDownload sx={{ mr: 1, color: 'primary.main' }} />
                   <Typography variant="h5" component="h3">
                     Load Example USDM
                   </Typography>
                 </Box>
-                <Typography variant="body1" color="textSecondary" sx={{ flexGrow: 1, mb: 2 }}>
-                  Explore the editor with the CDISC Pilot Study example.
-                  Load the example USDM file to see how the visual editor works.
+                <Typography
+                  variant="body1"
+                  color="textSecondary"
+                  sx={{ flexGrow: 1, mb: 2 }}
+                >
+                  Explore the editor with the CDISC Pilot Study example. Load
+                  the example USDM file to see how the visual editor works.
                 </Typography>
                 <Box>
                   <Button
@@ -121,27 +144,31 @@ export default function HomePage() {
               </CardContent>
             </Card>
           </Grid>
-          
+
           <Grid item xs={12} md={4}>
-            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-              <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+            <Card
+              sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+            >
+              <CardContent
+                sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}
+              >
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                   <Info sx={{ mr: 1, color: 'primary.main' }} />
                   <Typography variant="h5" component="h3">
                     Learn More
                   </Typography>
                 </Box>
-                <Typography variant="body1" color="textSecondary" sx={{ flexGrow: 1, mb: 2 }}>
-                  Discover the capabilities of the Visual USDM Editor and learn about
-                  CDISC USDM standards for clinical trial documentation.
+                <Typography
+                  variant="body1"
+                  color="textSecondary"
+                  sx={{ flexGrow: 1, mb: 2 }}
+                >
+                  Discover the capabilities of the Visual USDM Editor and learn
+                  about CDISC USDM standards for clinical trial documentation.
                 </Typography>
                 <Box>
                   <Link href="/about" passHref>
-                    <Button
-                      variant="outlined"
-                      fullWidth
-                      startIcon={<Info />}
-                    >
+                    <Button variant="outlined" fullWidth startIcon={<Info />}>
                       About USDM
                     </Button>
                   </Link>
@@ -156,13 +183,15 @@ export default function HomePage() {
             What is USDM?
           </Typography>
           <Typography variant="body1" sx={{ mb: 2 }}>
-            The Unified Study Definition Model (USDM) is a CDISC standard that provides a structured
-            way to define clinical studies. It enables the standardization of study design elements
-            and facilitates better communication between stakeholders in clinical research.
+            The Unified Study Definition Model (USDM) is a CDISC standard that
+            provides a structured way to define clinical studies. It enables the
+            standardization of study design elements and facilitates better
+            communication between stakeholders in clinical research.
           </Typography>
           <Typography variant="body1">
-            This Visual USDM Editor makes it easier to create, edit, and visualize USDM documents
-            through an intuitive graphical interface, reducing the complexity of working with raw JSON files.
+            This Visual USDM Editor makes it easier to create, edit, and
+            visualize USDM documents through an intuitive graphical interface,
+            reducing the complexity of working with raw JSON files.
           </Typography>
         </Paper>
       </Box>

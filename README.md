@@ -1,4 +1,5 @@
 # VisualUSDM
+
 Creating a Visual USDM Editor
 
 ## 🚀 Modern Technology Stack
@@ -14,7 +15,8 @@ This application is built with state-of-the-art technologies:
 ## 🏃‍♂️ Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - npm or yarn
 
 ### Installation
@@ -45,9 +47,41 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 The following file is an example
 
-File | Origin | Description
---- | --- | ---
-CDISC_Pilot_Study.json | [CDISC DDF Example](https://github.com/cdisc-org/DDF-RA/tree/v3.12.0/Documents/Examples/CDISC_Pilot) | Example USDM file as delivered by CDISC for the DDF Pilot ([MIT License](https://github.com/cdisc-org/DDF-RA/blob/v3.12.0/LICENSE))
+| File                   | Origin                                                                                               | Description                                                                                                                         |
+| ---------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| CDISC_Pilot_Study.json | [CDISC DDF Example](https://github.com/cdisc-org/DDF-RA/tree/v3.12.0/Documents/Examples/CDISC_Pilot) | Example USDM file as delivered by CDISC for the DDF Pilot ([MIT License](https://github.com/cdisc-org/DDF-RA/blob/v3.12.0/LICENSE)) |
+
+## 🚀 Deployment
+
+### GitHub Pages
+
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
+
+#### Setup Instructions:
+
+1. **Enable GitHub Pages:**
+   - Go to your repository Settings → Pages
+   - Under "Source", select "GitHub Actions"
+
+2. **Automatic Deployment:**
+   - Push to the `main` branch triggers automatic deployment
+   - The workflow builds the Next.js app and deploys to GitHub Pages
+   - Your site will be available at: `https://yourusername.github.io/VisualUSDM/`
+
+3. **Manual Deployment:**
+   - Go to Actions tab in your GitHub repository
+   - Click "Deploy to GitHub Pages" workflow
+   - Click "Run workflow" button
+
+#### Workflow Features:
+
+- ✅ Automatic builds on push to main branch
+- ✅ Static site generation optimized for GitHub Pages
+- ✅ Material-UI optimization for faster loading
+- ✅ TypeScript compilation and validation
+- ✅ Production-ready minification and optimization
+
+The deployment workflow is configured in `.github/workflows/deploy.yml` and uses Next.js static export feature for optimal GitHub Pages compatibility.
 
 ## 🤝 Contributing
 
