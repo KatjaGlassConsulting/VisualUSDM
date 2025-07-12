@@ -9,6 +9,8 @@ const nextConfig = {
   },
   // GitHub Pages configuration - always export as static
   output: 'export',
+  basePath: '/katjaglassconsulting.github.io',
+  assetPrefix: '/katjaglassconsulting.github.io/',
   trailingSlash: true,
   images: {
     unoptimized: true,
