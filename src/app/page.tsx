@@ -42,7 +42,9 @@ export default function HomePage() {
 
   const handleLoadExample = async () => {
     try {
-      const response = await fetch(getAssetPath('/Example/CDISC_Pilot_Study.json'));
+      const response = await fetch(
+        getAssetPath('/Example/CDISC_Pilot_Study.json')
+      );
       const exampleData = await response.json();
       // Store the example data and navigate to editor
       localStorage.setItem('importedUSDM', JSON.stringify(exampleData));
