@@ -41,33 +41,6 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 - `npm run lint` - Run ESLint
 - `npm run format` - Format code with Prettier
 
-## 📁 Project Structure
-
-```
-src/
-├── app/
-│   ├── layout.tsx          # Root layout with MUI theme
-│   ├── page.tsx            # Home page
-│   ├── theme.ts            # MUI theme configuration
-│   ├── editor/
-│   │   └── page.tsx        # USDM Editor page
-│   └── about/
-│       └── page.tsx        # About page
-├── Example/
-│   └── CDISC_Pilot_Study.json
-└── public/
-    └── favicon.ico
-```
-
-## ✨ Features
-
-- **Visual JSON Editor** - Edit USDM documents with syntax highlighting
-- **Real-time Validation** - Instant JSON validation and error reporting
-- **Import/Export** - Load and save USDM files
-- **Example Templates** - Pre-built CDISC examples
-- **Responsive Design** - Works on desktop, tablet, and mobile
-- **Modern UI** - Clean Material Design interface
-
 ## Example Files
 
 The following file is an example

@@ -10,10 +10,46 @@ import {
   Container,
   Paper,
 } from '@mui/material';
-import { Edit, FileOpen, Info } from '@mui/icons-material';
+import { Edit, FileOpen, Info, CloudDownload } from '@mui/icons-material';
 import Link from 'next/link';
+import { useRef } from 'react';
 
 export default function HomePage() {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleImportUSDM = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const jsonData = JSON.parse(e.target?.result as string);
+          // Store the imported data and navigate to editor
+          localStorage.setItem('importedUSDM', JSON.stringify(jsonData));
+          window.location.href = '/editor?source=import';
+        } catch (error) {
+          alert('Invalid JSON file. Please select a valid USDM JSON file.');
+        }
+      };
+      reader.readAsText(file);
+    }
+  };
+
+  const handleLoadExample = async () => {
+    try {
+      const response = await fetch('/Example/CDISC_Pilot_Study.json');
+      const exampleData = await response.json();
+      // Store the example data and navigate to editor
+      localStorage.setItem('importedUSDM', JSON.stringify(exampleData));
+      window.location.href = '/editor?source=example';
+    } catch (error) {
+      alert('Failed to load example file. Please try again.');
+    }
+  };
   return (
     <Container maxWidth="lg">
       <Box sx={{ py: 4 }}>
@@ -27,76 +63,89 @@ export default function HomePage() {
         <Grid container spacing={4} sx={{ mt: 4 }}>
           <Grid item xs={12} md={4}>
             <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-              <CardContent sx={{ flexGrow: 1 }}>
+              <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                  <Edit sx={{ mr: 1, color: 'primary.main' }} />
+                  <FileOpen sx={{ mr: 1, color: 'primary.main' }} />
                   <Typography variant="h5" component="h3">
                     Visual Editor
                   </Typography>
                 </Box>
-                <Typography variant="body1" color="textSecondary">
-                  Create and edit USDM documents with an intuitive visual interface.
-                  Drag and drop components, edit properties, and see real-time updates.
+                <Typography variant="body1" color="textSecondary" sx={{ flexGrow: 1, mb: 2 }}>
+                  Import your existing USDM JSON files and edit them with an intuitive visual interface.
+                  Upload your files to get started with the visual editor.
                 </Typography>
-                <Link href="/editor" passHref>
+                <Box>
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={handleFileSelect}
+                    accept=".json"
+                    style={{ display: 'none' }}
+                  />
                   <Button
                     variant="contained"
-                    sx={{ mt: 2 }}
-                    startIcon={<Edit />}
+                    fullWidth
+                    startIcon={<FileOpen />}
+                    onClick={handleImportUSDM}
                   >
-                    Open Editor
+                    Import USDM File
                   </Button>
-                </Link>
+                </Box>
               </CardContent>
             </Card>
           </Grid>
           
           <Grid item xs={12} md={4}>
             <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-              <CardContent sx={{ flexGrow: 1 }}>
+              <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                  <FileOpen sx={{ mr: 1, color: 'primary.main' }} />
+                  <CloudDownload sx={{ mr: 1, color: 'primary.main' }} />
                   <Typography variant="h5" component="h3">
-                    Import & Export
+                    Load Example USDM
                   </Typography>
                 </Box>
-                <Typography variant="body1" color="textSecondary">
-                  Import existing USDM JSON files and export your work in various formats.
-                  Full compatibility with CDISC DDF standards.
+                <Typography variant="body1" color="textSecondary" sx={{ flexGrow: 1, mb: 2 }}>
+                  Explore the editor with the CDISC Pilot Study example.
+                  Load the example USDM file to see how the visual editor works.
                 </Typography>
-                <Button
-                  variant="outlined"
-                  sx={{ mt: 2 }}
-                  startIcon={<FileOpen />}
-                >
-                  Browse Files
-                </Button>
+                <Box>
+                  <Button
+                    variant="outlined"
+                    fullWidth
+                    startIcon={<CloudDownload />}
+                    onClick={handleLoadExample}
+                  >
+                    Load Example
+                  </Button>
+                </Box>
               </CardContent>
             </Card>
           </Grid>
           
           <Grid item xs={12} md={4}>
             <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-              <CardContent sx={{ flexGrow: 1 }}>
+              <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                   <Info sx={{ mr: 1, color: 'primary.main' }} />
                   <Typography variant="h5" component="h3">
                     Learn More
                   </Typography>
                 </Box>
-                <Typography variant="body1" color="textSecondary">
+                <Typography variant="body1" color="textSecondary" sx={{ flexGrow: 1, mb: 2 }}>
                   Discover the capabilities of the Visual USDM Editor and learn about
                   CDISC USDM standards for clinical trial documentation.
                 </Typography>
-                <Link href="/about" passHref>
-                  <Button
-                    variant="outlined"
-                    sx={{ mt: 2 }}
-                    startIcon={<Info />}
-                  >
-                    About USDM
-                  </Button>
-                </Link>
+                <Box>
+                  <Link href="/about" passHref>
+                    <Button
+                      variant="outlined"
+                      fullWidth
+                      startIcon={<Info />}
+                    >
+                      About USDM
+                    </Button>
+                  </Link>
+                </Box>
               </CardContent>
             </Card>
           </Grid>
