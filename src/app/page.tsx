@@ -13,10 +13,10 @@ import {
 import { Edit, FileOpen, Info, CloudDownload } from '@mui/icons-material';
 import Link from 'next/link';
 import { useRef } from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 export default function HomePage() {
-  const { basePath } = useRouter()
+  const { basePath } = useRouter();
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -44,7 +44,9 @@ export default function HomePage() {
 
   const handleLoadExample = async () => {
     try {
-      const response = await fetch(basePath || '/Example/CDISC_Pilot_Study.json');
+      const response = await fetch(
+        basePath || '/Example/CDISC_Pilot_Study.json'
+      );
       const exampleData = await response.json();
       // Store the example data and navigate to editor
       localStorage.setItem('importedUSDM', JSON.stringify(exampleData));
