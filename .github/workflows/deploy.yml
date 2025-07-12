@@ -46,10 +46,33 @@ jobs:
       - name: Build with Next.js
         run: npm run build
 
+      - name: Verify output directory
+        run: |
+          ls -la
+          echo "Checking for output directories..."
+          
+          if [ -d "out" ]; then
+            echo "✅ Found 'out' directory (static export)"
+            ls -la out/
+            echo "UPLOAD_PATH=./out" >> $GITHUB_ENV
+          elif [ -d ".next/static" ]; then
+            echo "✅ Found '.next' directory (standard build)"
+            ls -la .next/
+            echo "UPLOAD_PATH=./.next" >> $GITHUB_ENV
+          else
+            echo "❌ No build output found"
+            ls -la
+            echo "Creating fallback directory"
+            mkdir -p out
+            echo "<h1>Build Error</h1><p>No build output was generated</p>" > out/index.html
+            echo "UPLOAD_PATH=./out" >> $GITHUB_ENV
+          fi
+          echo "Build output verification complete"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ${{ env.UPLOAD_PATH }}
 
   # Deployment job
   deploy:
@@ -58,7 +81,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
